@@ -24,6 +24,7 @@ RUN useradd collabnet && \
     cd /opt/csvn && \
     ./bin/csvn install && \
     mkdir -p ./data-initial && \
+    mkdir /var/log/supervisord /var/run/supervisord && \
     cp -r ./data/* ./data-initial && \
     apt-get clean && \
     rm -rf \
