@@ -11,9 +11,9 @@ RUN \
          supervisor \
          wget
 
-ENV FILE https://www.collab.net/sites/default/files/downloads/CollabNetSubversionEdge-5.2.4_linux-x86_64.tar.gz
+ENV FILE https://ctf.open.collab.net/sf/frs/do/downloadFile/projects.svnedge/frs.svnedge.6_0_2/frs24350?dl=1
 
-RUN wget -q ${FILE} -O /tmp/csvn.tgz && \
+RUN wget -q --cipher 'DEFAULT:!DH' ${FILE} -O /tmp/csvn.tgz && \
     mkdir -p /opt/csvn && \
     tar -xzf /tmp/csvn.tgz -C /opt/csvn --strip=1 && \
     rm -rf /tmp/csvn.tgz
