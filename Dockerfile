@@ -7,6 +7,7 @@ RUN \
   apt-get install -y \
          openjdk-8-jre-headless \
          python \
+         sudo \
          supervisor \
          wget
 
@@ -31,6 +32,11 @@ RUN useradd collabnet && \
            /tmp/* \
            /var/lib/apt/lists/* \
            /var/tmp/*
+
+RUN { \
+      echo 'Defaults env_keep += "PYTHONPATH"'; \
+      echo 'collabnet ALL=(ALL) NOPASSWD: /opt/csvn/bin/httpd'; \
+    } >> /etc/sudoers;
 
 EXPOSE 3343 4434 18080
 
